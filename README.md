@@ -1,0 +1,1 @@
+ansible nodes -i hosts -a "cat /etc/httpd/conf.d/000-default.conf"

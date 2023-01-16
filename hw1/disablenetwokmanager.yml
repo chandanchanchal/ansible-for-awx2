@@ -1,0 +1,17 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: update grub 
+      lineinfile:
+        dest: /etc/default/grub
+        regexp: "GRUB_CMDLINE_LINUX"
+        line: 'GRUB_CMDLINE_LINUX="crashkernel=auto rd.lvm.lv=centos/root rd.lvm.lv=centos/swap rhgb quiet net.ifnames=0 biosdevname=0" '
+      notify: "make grub config"
+      
+  handlers:
+    - name: make grub config
+      command: "grub2-mkconfig -o /boot/grub2/grub.cfg"

@@ -1,0 +1,14 @@
+NameVirtualHost *:80
+
+<VirtualHost *:80>
+    ServerName {{ ansible_facts['nodename'] }}
+    DocumentRoot /var/www/html/
+    ServerAdmin admin@example.com
+    ErrorLog logs/{{ ansible_facts['nodename'] }}-error_log
+    CustomLog logs/{{ ansible_facts['nodename'] }}-access_log common
+
+    <Directory /var/www/html/>
+        Options None
+    </Directory>
+
+</VirtualHost>
