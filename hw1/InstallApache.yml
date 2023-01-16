@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  user: ansible
+  user: ansadmin
   become: yes  
   tasks:
     - name: Install apache packages
